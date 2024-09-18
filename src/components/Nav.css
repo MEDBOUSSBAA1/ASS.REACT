@@ -1,0 +1,21 @@
+/* div ul{
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+    background-color: rgb(229, 217, 225);
+    height: 40px;
+
+  }
+  
+div ul li a{
+    color: rgb(17, 9, 239);
+  text-decoration: solid;
+  font-weight: bold;
+
+}
+div ul li a:hover{
+    color: chartreuse;
+}
+div ul li {
+    padding: 10px 0px;
+} */
