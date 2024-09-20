@@ -5,3 +5,7 @@ h1{
 /* body{
     background-image:url(./images/safran-marocain-1.jpg) ;
 } */
+#lisP{
+    font-size: small;
+    list-style-type: none;
+}

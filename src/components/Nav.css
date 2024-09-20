@@ -19,3 +19,6 @@ div ul li a:hover{
 div ul li {
     padding: 10px 0px;
 } */
+.navbar-nav{
+  justify-content: space-between;
+}
