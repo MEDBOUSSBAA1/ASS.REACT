@@ -5,8 +5,11 @@ import About from "./components/About";
 import Accueil from "./components/Accueil";
 import Produit from "./components/Produit";
 import './App.css';
+import Carts from "./components/Carts";
+import Footer from "./components/Footer"
+import data from './data.json';
 
-import Footer from "./Footer";
+
 
 function App() {
   return (
@@ -22,7 +25,8 @@ function App() {
       </div>
       
     </Router>
- 
+    <Carts/>
+    <Footer/>
    </>
    
   );

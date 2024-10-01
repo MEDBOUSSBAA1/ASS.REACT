@@ -22,3 +22,6 @@ div ul li {
 .navbar-nav{
   justify-content: space-between;
 }
+#ulnav{
+  justify-content: space-between;
+}

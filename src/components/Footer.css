@@ -1,0 +1,57 @@
+
+
+
+
+
+.ulMedia li a {
+    list-style-type: none;
+    text-decoration: none;
+    
+}
+
+
+.footer{
+    display: flex;
+    justify-content: space-between; /* Space between the two sections */
+    align-items: center; /* Aligns them vertically */
+    padding: 10px;
+    background-color: #e1a54b;
+    height: 200px;
+    width: 100%;
+}
+.ulMedia h3{
+    
+    color: #04ff00;
+}
+.ulLien ul{
+    
+    list-style-type: none;
+    text-decoration: none;
+    
+}
+.ulLien h3{
+    
+    color: #04ff00;
+  
+}
+.ulLien li a:focus {
+    outline: none; /* Supprime le contour par défaut */
+    background-color: #0e18d5; /* Change la couleur de fond */
+}
+.ulLien{
+   
+    
+   
+    position: relative;
+    left: 1000px;
+   
+    
+    
+}
+.ulMedia{
+    margin-left: 0%;
+    
+    margin-left: 30%;
+    position: absolute;
+    left: 900px;
+}
