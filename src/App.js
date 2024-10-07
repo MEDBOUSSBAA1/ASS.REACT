@@ -23,10 +23,12 @@ function App() {
           <Route path="/produit" element={<Produit />} />
         </Routes>
       </div>
-      
+      <Carts/>
+      <Footer/>
     </Router>
-    <Carts/>
-    <Footer/>
+    
+   
+    
    </>
    
   );

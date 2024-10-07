@@ -12,9 +12,7 @@ export default function Accueil() {
   return (
     
     <div>
-      <h1>COOPERATIVE AGRICOLE ASSOUSIEL</h1>
-   
-    
+      <h1>COOPERATIVE AGRICOLE ASSOUSIEL</h1> ² 
     </div>
      
   );
