@@ -1,53 +1,43 @@
-import React from 'react'
-import './Footer.css'
-import positionmaps from './images/positionmaps.png'
-import { Link } from 'react-router-dom'
-import { BrowserRouter as Router } from 'react-router-dom';
+import React from 'react';
+import './Footer.css'; // Assurez-vous d'importer le fichier CSS
 import mailfoo from './images/mailfoo.png'
 import positionfoo from './images/positionfoo.png'
-import phonefoo from './images/phonfoo.png'
-export default function Footer() {
-    const url='https://www.google.com/maps/place/%D8%AD%D9%8A+%D8%AA%D9%83%D8%B1%D9%83%D9%88%D8%B3%D8%AA%E2%80%AD/@30.5345514,-7.9331857,19z/data=!4m6!3m5!1s0xdb085332c931eb9:0x736e1990f60a9b99!8m2!3d30.534727!4d-7.9314262!16s%2Fg%2F11srbnn0ng?entry=ttu&g_ep=EgoyMDI0MTAwMS4wIKXMDSoASAFQAw%3D%3D'
-  return (
-        <footer className='footerG'>
-            <div className='div1'>
-                <h3>اتصل بنا</h3>
-                <ul >
-                    <li><Link>الرئيسية</Link></li>
-                    <li><Link>حولنا</Link></li>
-                    <li><Link>اشتري</Link></li>
-                </ul>
-            </div>
-            <div className='div2'>
-            <h3>اتصل بنا</h3>
-                <ul>
-                    <li>
-                    <Link>الرئيسية</Link>
-                    </li>
-                    <li><Link>حولنا</Link></li>
-                    <li><Link>منتوجتنا</Link></li>
-                </ul>
-            </div>
-            <div className='divp'>
-                <p>Nos Position</p>
-            <a href={url}>
-                    <img src={positionmaps} alt="Position Map"/>
-                </a>
-            </div>
-            <div>
-                <h3>اتصل بنا</h3>
-                <ul className='ulIMG'>
-                    <li>
-                        <p> <img src={mailfoo}  alt=""/>    البريد الاليكتروني</p>
-                    </li>
-                    <li>
-                        <p><img src={positionfoo}  alt=""/>العنوان</p>
-                    </li>
-                    <li>
-                         <p><img src={phonefoo} alt=""/> <strong>0689637828</strong></p>
-                    </li>
-                </ul>
+import Phonefoo from './images/Phonfoo.png'
+import positionmaps from './images/positionmaps.png'
+
+const Footer = () => {
+    return (
+        <footer>
+            <div className="footer-container">
+                <div>
+                    <ul className="footer-menu">
+                        <li><a href="/">الرئيسية</a></li>
+                        <li><a href="/about">حولنا</a></li>
+                        <li><a href="/products">منتوجتنا</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <ul className="footer-menu">
+                        <li><a href="/">الرئيسية</a></li>
+                        <li><a href="/about">حولنا</a></li>
+                        <li><a href="/shop">اشتري</a></li>
+                    </ul>
+                </div>
+                <div className="contact-info">
+                    <p>اتصل بنا</p>
+                    <p><img src={mailfoo} alt="Email icon" width={"70px"} height={"70px"} /> البريد الإلكتروني</p>
+                    <p><img src={positionfoo} alt="Location icon"  width={"70px"} height={"70px"}/> العنوان</p>
+                    <p><img src="" alt="Phone icon" /> 0689637828</p>
+                </div>
+                <div className="map">
+                    <p>Nos Position</p>
+                    <img src={positionmaps} alt="Map"  width={"100px"} height={"100px"} />
+                </div>
             </div>
         </footer>
-  )
-}
+    );
+};
+
+export default Footer;
+
+
