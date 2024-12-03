@@ -1,43 +1,52 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-import './Nav.css'
 
-export default function Nav() {
+export default function Nav ()  {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-    <div className="container-fluid">
-      <a className="navbar-brand" href="/">Brand</a>
-      <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span className="navbar-toggler-icon">
-        <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Accueil</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">À propos</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Contact</a>
-                    </li>
-                </ul>
-            </div>
-        </span>
-      </button>
-      <div className="collapse navbar-collapse" id="navbarNav">
-        <ul className="navbar-nav mx-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to="/">Accueil</Link>
+    <nav className="bg-blue-900 shadow-lg">
+      <div className="container mx-auto px-4 py-3 flex items-center justify-between">
+        {/* Logo */}
+        <div className="text-white text-2xl font-bold">
+          <Link to="/">MonLogo</Link>
+        </div>
+
+        {/* Navigation Links */}
+        <ul className="flex space-x-6 text-white font-medium">
+          <li>
+            <Link
+              to="/home"
+              className="hover:text-blue-400 transition duration-200"
+            >
+              Home
+            </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/about">About</Link>
+          <li>
+            <Link
+              to="/About"
+              className="hover:text-blue-400 transition duration-200"
+            >
+              About
+            </Link>
           </li>
-          <li className="nav-item">
-            <Link className="nav-link" to="/produit">Produit</Link>
+          <li>
+            <Link
+              to="/produit"
+              className="hover:text-blue-400 transition duration-200"
+            >
+              Produits
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/contact"
+              className="hover:text-blue-400 transition duration-200"
+            >
+              Contact
+            </Link>
           </li>
         </ul>
       </div>
-    </div>
-  </nav>
-  )
-}
+    </nav>
+  );
+};
+

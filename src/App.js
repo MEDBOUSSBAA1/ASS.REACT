@@ -8,6 +8,10 @@ import './App.css';
 import Carts from "./components/Carts";
 import Footer from "./components/Footer"
 import data from './data.json';
+import Admin from "./layout/admin";
+import Guest from "./layout/guest";
+import Ajouter_pro from "./components-admin/ajouter_pro";
+import { Toaster } from "sonner";
 
 
 
@@ -15,20 +19,36 @@ function App() {
   return (
    <>
     <Router>
-    <Nav/>
+    
       <div id="div1">
         <Routes>
-          <Route path="/" element={<Accueil />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/produit" element={<Produit />} />
+          <Route exact path="/" element={<Guest>
+            <Accueil />
+          </Guest>} />
+          <Route path="/about" element={<Guest>
+            <About/>
+          </Guest>} />
+          <Route path="/produit" element={<Guest>
+            <Produit />
+          </Guest>} />
+          <Route path="/admin" element={
+            <Admin>
+            dashboard
+            </Admin>
+          } />
+          <Route path="/addpr" element={<Admin>
+            <Ajouter_pro/>
+          </Admin>}/>
+
+
         </Routes>
       </div>
-      <Carts/>
-      <Footer/>
+      {/* <Carts/> */}
+      
     </Router>
     
    
-    
+    <Toaster richColors/>
    </>
    
   );
