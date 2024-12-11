@@ -12,6 +12,8 @@ import Admin from "./layout/admin";
 import Guest from "./layout/guest";
 import Ajouter_pro from "./components-admin/ajouter_pro";
 import { Toaster } from "sonner";
+import Modifier_produit from "./components-admin/modifier_produit";
+import List_produit from "./components-admin/list_produit";
 
 
 
@@ -40,11 +42,22 @@ function App() {
             <Ajouter_pro/>
           </Admin>}/>
 
+          <Route path="" element={<Admin>
+            <Modifier_produit/>
+          </Admin>}/>
+
+          <Route path="/lisp" element={<Admin>
+            <List_produit/>
+          </Admin>}/>
+          <Route path="/modifier/:id" element={<Admin>
+            <Modifier_produit/>
+          </Admin>}/>
+
 
         </Routes>
       </div>
       {/* <Carts/> */}
-      
+      <Footer/>
     </Router>
     
    

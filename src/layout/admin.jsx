@@ -14,10 +14,10 @@ const Dashboard = ({ children }) => {
           Ajouter un produit
         </Link>
         <Link
-          to=""
+          to="/lisp"
           className="text-sm font-medium text-yellow-600 hover:text-white hover:bg-yellow-500 px-4 py-2 rounded-lg transition duration-300 ease-in-out"
         >
-          Modifier un produit
+          list des produit
         </Link>
         <Link
           to=""
