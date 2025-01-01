@@ -1,8 +1,31 @@
 import React, { useEffect, useState } from "react";
+import Cookies from 'js-cookie';
+
 
 export default function Carts() {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+
+  
+  const addToCard = (id, quantity) => {
+    // Retrieve the current products from the cookie
+    let products = Cookies.get('product');
+    products = products ? JSON.parse(products) : [];
+  
+    // Check if the product already exists
+    const productIndex =products.findIndex(product => product.id === id);
+    if (productIndex !== -1) {
+      // Update the quantity if product already exists
+      products[productIndex].quantity += quantity;
+    } else {
+      // Add new product to the list
+      products.push({ id, quantity });
+    }
+  
+    // Save the updated product list back to the cookie
+    Cookies.set('product', JSON.stringify(products), { expires: 7 });
+  };
+  
 
   // Fetch products from API
   const getProducts = async () => {
@@ -40,7 +63,7 @@ export default function Carts() {
         <h2 className="text-xl font-semibold text-gray-700">{product.nom}</h2>
         <p className="text-gray-600 mt-2">{product.description}</p>
         <p className="text-xl font-bold text-gray-800 mt-4">{product.prix} DH</p>
-        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition">
+        <button className="mt-4 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600 transition" onClick={()=>addToCard(product.id,1)}>
           Ajouter au panier
         </button>
       </div>

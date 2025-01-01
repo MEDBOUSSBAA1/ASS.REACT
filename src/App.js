@@ -14,6 +14,8 @@ import Ajouter_pro from "./components-admin/ajouter_pro";
 import { Toaster } from "sonner";
 import Modifier_produit from "./components-admin/modifier_produit";
 import List_produit from "./components-admin/list_produit";
+import Panier from "./components/Panier";
+
 
 
 
@@ -24,6 +26,10 @@ function App() {
     
       <div id="div1">
         <Routes>
+        <Route  exact path="/panier" element={<Guest>
+          <Panier/>
+          </Guest>} />
+
           <Route exact path="/" element={<Guest>
             <Accueil />
           </Guest>} />
@@ -31,7 +37,7 @@ function App() {
             <About/>
           </Guest>} />
           <Route path="/produit" element={<Guest>
-            <Produit />
+            <Carts/>
           </Guest>} />
           <Route path="/admin" element={
             <Admin>
@@ -56,7 +62,8 @@ function App() {
 
         </Routes>
       </div>
-      {/* <Carts/> */}
+      
+      <Carts/>
       <Footer/>
     </Router>
     

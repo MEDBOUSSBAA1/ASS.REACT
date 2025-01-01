@@ -1,5 +1,7 @@
+
 import React from "react";
 import { Link } from "react-router-dom";
+import { FiShoppingCart } from "react-icons/fi";
 
 export default function Nav ()  {
   return (
@@ -9,9 +11,14 @@ export default function Nav ()  {
         <div className="text-white text-2xl font-bold">
           <Link to="/">MonLogo</Link>
         </div>
+        
 
         {/* Navigation Links */}
         <ul className="flex space-x-6 text-white font-medium">
+        <li className="text-white  list-none mr-5" >
+          <Link to={"/panier"}><FiShoppingCart/></Link>
+        
+        </li>
           <li>
             <Link
               to="/home"
