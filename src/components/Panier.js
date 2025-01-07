@@ -1,88 +1,83 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
+
 export default function Panier() {
-  const[products,setproducts]=useState(Cookies.get('product')??[])
-  const[ids,setids]=useState(products ? JSON.parse(products).map(item=>item.id) : [])
-  const[prolist,setprolist]=useState([])
+  const [products, setProducts] = useState(Cookies.get('product') ? JSON.parse(Cookies.get('product')) : []);
+  const [prolist, setProlist] = useState([]);
 
-  const inc=(id)=>{
-    let products = Cookies.get('product');
-        products = products ? JSON.parse(products) : [];
-      
-        // Check if the product already exists
-        const productIndex =products.findIndex(product => product.id === id);
-        if (productIndex !== -1) {
-          // Update the quantity if product already exists
-          products[productIndex].quantity += 1;
-        }
-        Cookies.set('product', JSON.stringify(products), { expires: 7 });
-      
-  }
-  const dec=(id)=>{
-    let products=Cookies.get('product')
-    products=products? JSON.parse(products) :[]
-    const productIndex=products.findIndex(product=>product.id===id)
-    if(productIndex!==-1){
-      products[productIndex].quantity -=1
+  const updateQuantity = (id, delta) => {
+    // Mise à jour de la quantité localement
+    const updatedProducts = products.map((product) =>
+      product.id === id ? { ...product, quantity: Math.max(0, product.quantity + delta) } : product
+    );
+    setProducts(updatedProducts);
+    // Mettre à jour les cookies
+    Cookies.set('product', JSON.stringify(updatedProducts), { expires: 7 });
+  };
+
+  const deleteProduct = (id) => {
+    const updatedProducts = products.filter((product) => product.id !== id);
+    setProducts(updatedProducts);
+    Cookies.set('product', JSON.stringify(updatedProducts), { expires: 7 });
+  };
+
+  const getProducts = async () => {
+    try {
+      const ids = products.map((item) => item.id);
+      const response = await axios.post("http://localhost:8000/api/produits/get", { ids });
+      setProlist(response.data.produits);
+    } catch (error) {
+      console.error("Erreur lors de la récupération des produits :", error);
     }
-    Cookies.set('product',JSON.stringify(products),{ expires: 7 })
-  }
-  
-  const suprimerpanier=(id)=>{
-    const prd=Cookies.get('product')
-    const newcookies=JSON.parse(prd).filter(item=>item.id!=id)
-    Cookies.set('product', JSON.stringify(newcookies), { expires: 7 });
-  }
+  };
 
-  const getpr=async()=>{
-    try{
-      const response=await axios.post("http://localhost:8000/api/produits/get",{ids})
-      setprolist(response.data.produits)
-    }catch{}
-  }
-useEffect(()=>{
-  getpr()
-},[])
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   return (
     <div className="w-full">
       <table className="w-full table">
-        <tr>
-          <th>id</th>
-          <th>Nom</th>
-          <th>description</th>
-          <th>prix</th>
-          <th>quantite</th>
-          <th>total</th>
-          <th>spprimer</th>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Description</th>
+            <th>Prix</th>
+            <th>Quantité</th>
+            <th>Total</th>
+            <th>Supprimer</th>
+          </tr>
+        </thead>
+        <tbody>
+          {prolist.map((pr) => {
+            const product = products.find((item) => item.id === pr.id);
+            return (
+              <tr key={pr.id}>
+                <td>{pr.id}</td>
+                <td>{pr.nom}</td>
+                <td>{pr.description}</td>
+                <td>{pr.prix}</td>
+                <td>
+                <div>
+                    <button onClick={() => updateQuantity(pr.id, -1)}>-</button>
+                    <span className="px-3 py-1 text-black rounded-full font-semibold text-sm shadow-md">
+                         {product?.quantity || 0}
+                    </span>
 
-        </tr>
-        {
-          prolist&&
-          prolist.map(pr=>{
-            return(
-              <tr>
-          <td>{pr.id}</td>
-          <td>{pr.nom}</td>
-          <td>{pr.description}</td>
-          <td>{pr.prix}</td>
-          <td>
-            <div>
-              <button onClick={(e)=>dec(pr.id)}>{'-'}</button>
-              <span>{JSON.parse(products).find(item=>item.id==pr.id).quantity}</span>
-              <button onClick={(e)=>inc(pr.id)}>{'+'}</button>
-            </div>
-          </td>
-          <td>{pr.prix*JSON.parse(products).find(item=>item.id==pr.id).quantity} MAD</td>
-          <td><button onClick={(e)=>{suprimerpanier(pr.id)}}>supprimer</button></td>
-
-          
-        </tr>
-            )
-          })
-        }
+                    <button onClick={() => updateQuantity(pr.id, 1)}>+</button>
+                  </div>
+                </td>
+                <td>{pr.prix * (product?.quantity || 0)} MAD</td>
+                <td>
+                  <button onClick={() => deleteProduct(pr.id)}>Supprimer</button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
       </table>
     </div>
-  )
+  );
 }

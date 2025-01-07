@@ -15,6 +15,7 @@ import { Toaster } from "sonner";
 import Modifier_produit from "./components-admin/modifier_produit";
 import List_produit from "./components-admin/list_produit";
 import Panier from "./components/Panier";
+import Contact from "./components/Contact";
 
 
 
@@ -30,8 +31,9 @@ function App() {
           <Panier/>
           </Guest>} />
 
-          <Route exact path="/" element={<Guest>
+          <Route exact path="/home" element={<Guest>
             <Accueil />
+            <Carts/>
           </Guest>} />
           <Route path="/about" element={<Guest>
             <About/>
@@ -39,6 +41,12 @@ function App() {
           <Route path="/produit" element={<Guest>
             <Carts/>
           </Guest>} />
+
+          <Route exact path="/contact" element={<Guest>
+            <Contact/>
+            
+          </Guest>} />
+
           <Route path="/admin" element={
             <Admin>
             dashboard
@@ -63,7 +71,7 @@ function App() {
         </Routes>
       </div>
       
-      <Carts/>
+      
       <Footer/>
     </Router>
     
