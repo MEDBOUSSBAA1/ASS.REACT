@@ -16,6 +16,8 @@ import Modifier_produit from "./components-admin/modifier_produit";
 import List_produit from "./components-admin/list_produit";
 import Panier from "./components/Panier";
 import Contact from "./components/Contact";
+import Register from "./authentification/Register";
+import Login from "./authentification/Login";
 
 
 
@@ -31,7 +33,7 @@ function App() {
           <Panier/>
           </Guest>} />
 
-          <Route exact path="/home" element={<Guest>
+          <Route exact path="/" element={<Guest>
             <Accueil />
             <Carts/>
           </Guest>} />
@@ -56,7 +58,7 @@ function App() {
             <Ajouter_pro/>
           </Admin>}/>
 
-          <Route path="" element={<Admin>
+          <Route path="/modfier" element={<Admin>
             <Modifier_produit/>
           </Admin>}/>
 
@@ -66,6 +68,15 @@ function App() {
           <Route path="/modifier/:id" element={<Admin>
             <Modifier_produit/>
           </Admin>}/>
+
+          <Route exact path="/register" element={<Guest>
+            <Register/>
+            
+          </Guest>} />
+
+          <Route exact path="/login" element={<Guest>
+            <Login/>
+          </Guest>} />
 
 
         </Routes>

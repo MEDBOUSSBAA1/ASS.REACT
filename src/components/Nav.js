@@ -2,6 +2,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FiShoppingCart } from "react-icons/fi";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 export default function Nav ()  {
   return (
@@ -16,7 +18,7 @@ export default function Nav ()  {
         {/* Navigation Links */}
         <ul className="flex space-x-6 text-white font-medium">
         <li className="text-white  list-none mr-5" >
-          <Link to={"/panier"}><FiShoppingCart/></Link>
+          <Link to="/panier"><FiShoppingCart/></Link>
         
         </li>
           <li>
@@ -49,6 +51,19 @@ export default function Nav ()  {
               className="hover:text-blue-400 transition duration-200"
             >
               Contact
+            </Link>
+          </li>
+          <li  >
+        </li>
+        
+        <li><Link className="hover:text-blue-400 transition duration-200" to="/register">register</Link></li>
+        
+        <li>
+            <Link
+              to="/login"
+              className="hover:text-blue-400 transition duration-200"
+            >
+              Login
             </Link>
           </li>
         </ul>
